@@ -14,7 +14,6 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  // this is a comment
   List<PasswordData> passwords = [
     PasswordData(name: 'app1', username: 'mihir', password: 'secret'),
     PasswordData(name: 'app2', username: 'user2', password: 'super Secret'),
@@ -25,14 +24,23 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey[800],
       appBar: AppBar(
         title: const Text('Passwords'),
         backgroundColor: Colors.blueGrey[900],
         elevation: 1.0,
       ),
-      body: Column(
-        children: passwords.map((currPassword) => PasswordCard(currPassword: currPassword)).toList(),
+      body: Stack(
+        children: [
+          Container(
+            color: Colors.blueGrey[800],
+          ),
+          SingleChildScrollView(
+            child: Column(
+              children: passwords.map((currPassword) => PasswordCard(currPassword: currPassword)).toList(),
+            ),
+          ),
+
+        ],
       ),
     );
   }

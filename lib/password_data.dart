@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'hero_dialog_route.dart';
 
 class PasswordData{
   String username;
@@ -10,38 +11,130 @@ class PasswordData{
 
 class PasswordCard extends StatelessWidget {
   final PasswordData currPassword;
-  PasswordCard({required this.currPassword});
+  const PasswordCard({required this.currPassword});
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.blueGrey[100],
-      margin: const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 0.0),
-      child: GestureDetector(
-        onLongPress: () => print('long pressed'),
-        onLongPressUp: () => print('press canceled'),
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(currPassword.name, style: const TextStyle(
-                fontSize: 15.0,
-                letterSpacing: 2.0,
-              ),),
-              const SizedBox(height: 7.0,),
-              Text('Username:${currPassword.username}', style: const TextStyle(
-                fontSize: 10.0,
-                letterSpacing: 2.0,
-              ),),
-              const SizedBox(height: 4.0,),
-              Text('Password:${currPassword.password}', style: const TextStyle(
-                fontSize: 10.0,
-                letterSpacing: 2.0,
-              ),),
-            ],
+    return GestureDetector(
+      onLongPress: (){
+        Navigator.of(context).push(
+          HeroDialogRoute(
+            builder: (context) => Center(
+              child: PopUpWindow(currPassword: currPassword,),
+            ),
+          ),
+        );
+      },
+      child: Hero(
+          tag: currPassword.name,
+          child: SingleChildScrollView(
+            child: Card(
+              margin: const EdgeInsets.fromLTRB(7.0, 7.0, 7.0, 0.0),
+              color: Colors.transparent,
+              elevation: 0,
+              child: Material(
+                borderRadius: BorderRadius.circular(15.0),
+                elevation: 5.0,
+                color: Colors.blueGrey[100],
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 7.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(currPassword.name,
+                        style: const TextStyle(
+                          fontSize: 15.0,
+                          letterSpacing: 2.0,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 7.0,
+                      ),
+                      Text('Username:${currPassword.username}',
+                        style: const TextStyle(
+                          fontSize: 10.0,
+                          letterSpacing: 2.0,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 4.0,
+                      ),
+                      Text('Password:${currPassword.password}',
+                        style: const TextStyle(
+                          fontSize: 10.0,
+                          letterSpacing: 2.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+      ),
+    );
+  }
+}
+
+class PopUpWindow extends StatelessWidget {
+  final PasswordData currPassword;
+  const PopUpWindow({required this.currPassword});
+
+  @override
+  Widget build(BuildContext context) {
+    return Hero(
+        tag: currPassword.name,
+        child: SingleChildScrollView(
+          child: Material(
+            borderRadius: BorderRadius.circular(15.0),
+            color: Colors.blueGrey[100],
+            child: SizedBox(
+              child: Padding(
+                padding: EdgeInsets.all(16.0),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.all(10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              currPassword.name,
+                              style: const TextStyle(
+                                fontSize: 25.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 30.0,
+                            ),
+                            Text(
+                                'Username:${currPassword.username}',
+                                style: const TextStyle(
+                                  fontSize: 15.0,
+                                  letterSpacing: 2.0,
+                                ),
+                              ),
+                            const SizedBox(
+                                height: 4.0,
+                              ),
+                            Text('Password:${currPassword.password}',
+                                style: const TextStyle(
+                                  fontSize: 15.0,
+                                  letterSpacing: 2.0,
+                                ),
+                              ),
+                          ],
+                        )
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ),
         ),
-      ),
     );
   }
 }
