@@ -14,6 +14,7 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
+  // this is a comment
   List<PasswordData> passwords = [
     PasswordData(name: 'app1', username: 'mihir', password: 'secret'),
     PasswordData(name: 'app2', username: 'user2', password: 'super Secret'),
