@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'hero_dialog_route.dart';
+import 'main.dart';
 
 class PasswordData{
   String username;
@@ -11,7 +12,7 @@ class PasswordData{
 
 class PasswordCard extends StatelessWidget {
   final PasswordData currPassword;
-  const PasswordCard({required this.currPassword});
+  const PasswordCard({super.key, required this.currPassword});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -49,7 +50,7 @@ class PasswordCard extends StatelessWidget {
                       const SizedBox(
                         height: 7.0,
                       ),
-                      Text('Username:${currPassword.username}',
+                      Text('Username: ${currPassword.username}',
                         style: const TextStyle(
                           fontSize: 10.0,
                           letterSpacing: 2.0,
@@ -58,7 +59,7 @@ class PasswordCard extends StatelessWidget {
                       const SizedBox(
                         height: 4.0,
                       ),
-                      Text('Password:${currPassword.password}',
+                      Text('Password: ${currPassword.password}',
                         style: const TextStyle(
                           fontSize: 10.0,
                           letterSpacing: 2.0,
@@ -77,7 +78,7 @@ class PasswordCard extends StatelessWidget {
 
 class PopUpWindow extends StatelessWidget {
   final PasswordData currPassword;
-  const PopUpWindow({required this.currPassword});
+  const PopUpWindow({super.key, required this.currPassword});
 
   @override
   Widget build(BuildContext context) {
@@ -87,50 +88,46 @@ class PopUpWindow extends StatelessWidget {
           child: Material(
             borderRadius: BorderRadius.circular(15.0),
             color: Colors.blueGrey[100],
-            child: SizedBox(
-              child: Padding(
-                padding: EdgeInsets.all(16.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.all(10.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              currPassword.name,
-                              style: const TextStyle(
-                                fontSize: 25.0,
-                                fontWeight: FontWeight.bold,
-                              ),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(25.0, 20.0, 25.0, 20.0),
+                    color: Colors.blueGrey[100],
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          currPassword.name,
+                          style: const TextStyle(
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30.0,
+                        ),
+                        Text(
+                            'Username: ${currPassword.username}',
+                            style: const TextStyle(
+                              fontSize: 15.0,
+                              letterSpacing: 2.0,
                             ),
-                            SizedBox(
-                              height: 30.0,
+                          ),
+                        const SizedBox(
+                            height: 4.0,
+                          ),
+                        Text('Password: ${currPassword.password}',
+                            style: const TextStyle(
+                              fontSize: 15.0,
+                              letterSpacing: 2.0,
                             ),
-                            Text(
-                                'Username:${currPassword.username}',
-                                style: const TextStyle(
-                                  fontSize: 15.0,
-                                  letterSpacing: 2.0,
-                                ),
-                              ),
-                            const SizedBox(
-                                height: 4.0,
-                              ),
-                            Text('Password:${currPassword.password}',
-                                style: const TextStyle(
-                                  fontSize: 15.0,
-                                  letterSpacing: 2.0,
-                                ),
-                              ),
-                          ],
-                        )
-                      ),
-                    ],
+                          ),
+                      ],
+                    )
                   ),
-                ),
+                ],
               ),
             ),
           ),

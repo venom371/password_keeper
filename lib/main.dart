@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:password_keeper/firebase_options.dart';
 import 'password_data.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'add_button.dart';
 
-void main() => runApp(const MaterialApp(
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const MaterialApp(
     home: MainApp(),
     debugShowCheckedModeBanner: false,
-));
+  ));
+}
 
 class MainApp extends StatefulWidget {
   const MainApp({Key? key}) : super(key: key);
@@ -29,6 +38,7 @@ class _MainAppState extends State<MainApp> {
         backgroundColor: Colors.blueGrey[900],
         elevation: 1.0,
       ),
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           Container(
@@ -39,7 +49,10 @@ class _MainAppState extends State<MainApp> {
               children: passwords.map((currPassword) => PasswordCard(currPassword: currPassword)).toList(),
             ),
           ),
-
+          const Align(
+            alignment: AlignmentDirectional.bottomEnd,
+            child: AddButton(),
+          ),
         ],
       ),
     );

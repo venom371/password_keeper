@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "908706351829",
+    "project_id": "password-keeper-a2652",
+    "storage_bucket": "password-keeper-a2652.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:908706351829:android:419fcb94342267aef8f05c",
+        "android_client_info": {
+          "package_name": "com.example.password_keeper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "908706351829-e4anphneb324nhi0tfguo8d5mrt5v3qd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXHRDRasKIkqLwYL-3s04KbcN-NfTLZbE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "908706351829-e4anphneb324nhi0tfguo8d5mrt5v3qd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "908706351829-08ha1haloai3iaatfk526faoo7fpuuok.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.passwordKeeper"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
